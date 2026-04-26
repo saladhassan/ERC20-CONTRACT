@@ -57,14 +57,14 @@ contract ERC20 {
     }
     event Approval(address indexed owner, address indexed spender, uint256 amount);
 
-    function Approve(address spender, uint256 amount) public returns (bool){
+    function approve(address spender, uint256 amount) public returns (bool){
           require(spender != address(0), "invalid address");
         allowance[msg.sender][spender] = amount;
         emit Approval(msg.sender, spender, amount);
         return true;
 
     }
-    function TransferFrom( address from , address to , uint256 amount) public returns (bool){
+    function transferFrom( address from , address to , uint256 amount) public returns (bool){
         require(to != address(0),"invalid address");
         require (balanceOf[from]>= amount, "not enough balance");
         require (allowance[from][msg.sender]>= amount, "not allowed");
